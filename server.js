@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 
 require('dotenv').config({ path : "./config.env"});
-const port = process.env.PORT || 5000;
+const BASE_URL = process.env.BASE_URL;
 
 // use middleware
 app.use(cors());
@@ -19,8 +19,8 @@ con.then(db => {
     if(!db) return process.exit(1);
 
     // listen to the http server 
-    app.listen(port, () => {
-        console.log(`Server is running on port: http://localhost:${port}`)
+    app.listen(BASE_URL, () => {
+        console.log(`Server is running on port: :${BASE_URL}`)
     })
 
     app.on('error', err => console.log(`Failed To Connect with HTTP Server : ${err}`));
